@@ -9,8 +9,6 @@ from pyrogram import Client, filters
 # CONFIG
 # =====================================
 
-API_ID = 123456
-API_HASH = "YOUR_API_HASH"
 
 # =====================================
 # LOGGING
@@ -22,11 +20,13 @@ logging.basicConfig(level=logging.CRITICAL)
 # CLIENT
 # =====================================
 
+import os
+
 app = Client(
     "stable-userbot",
-    api_id=API_ID,
-    api_hash=API_HASH,
-    workdir="./"
+    api_id=int(os.getenv("API_ID")),
+    api_hash=os.getenv("API_HASH"),
+    session_string=os.getenv("SESSION_STRING")
 )
 
 tasks = {}
